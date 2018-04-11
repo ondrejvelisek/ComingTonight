@@ -2,8 +2,8 @@ package com.muni.comingtonight.service
 
 import com.muni.comingtonight.model.Show
 
-interface TvProgramService {
+interface ShowRatingService {
 
-    fun getTodaysMovies() : List<Show>
+    fun getRating(show: Show) : Double
 
 }
