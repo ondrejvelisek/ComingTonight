@@ -4,7 +4,7 @@ import com.muni.comingtonight.model.Show
 
 class ShowRatingServiceStatic : ShowRatingService{
 
-    override fun getRating(show: Show): Double {
+    override fun getRating(title: String): Double {
         return 8.3
     }
 

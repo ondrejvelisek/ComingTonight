@@ -1,6 +1,6 @@
 package com.muni.comingtonight.model
 
-data class Show(
-        val title: String,
+data class Place(
+        val name: String,
         val rating: Double
 )

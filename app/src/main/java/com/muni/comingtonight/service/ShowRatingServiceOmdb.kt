@@ -9,7 +9,7 @@ import com.muni.comingtonight.model.Show
  */
 class ShowRatingServiceOmdb : ShowRatingService{
 
-    override fun getRating(show: Show): Double {
+    override fun getRating(title: String): Double {
         TODO("Unimplemented yet")
     }
 

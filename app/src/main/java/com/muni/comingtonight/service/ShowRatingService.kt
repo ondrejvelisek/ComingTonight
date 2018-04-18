@@ -4,6 +4,6 @@ import com.muni.comingtonight.model.Show
 
 interface ShowRatingService {
 
-    fun getRating(show: Show) : Double
+    fun getRating(title: String) : Double
 
 }

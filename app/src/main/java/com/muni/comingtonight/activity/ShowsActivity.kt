@@ -27,7 +27,7 @@ class ShowsActivity : AppCompatActivity() {
         val shows = tvProgramService.getTodaysMovies()
         var bestShow = shows.first()
         shows.forEach { show ->
-            if (showRatingService.getRating(show) > showRatingService.getRating(bestShow)) {
+            if (showRatingService.getRating(show.title) > showRatingService.getRating(bestShow.title)) {
                 bestShow = show
             }
         }
