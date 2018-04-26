@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
 
         val placesCall = googlePlaces.nearbySearch("49.211210,16.577599", 4000, "park", "AIzaSyBte43rrniMxyhl5H0UYT7gYPlIWWjfLco")
 
-
         placesCall.enqueue(object : Callback<Map<String, Any>> {
             override fun onResponse(call: Call<Map<String, Any>>?, response: Response<Map<String, Any>>?) {
                 println(response?.body())
