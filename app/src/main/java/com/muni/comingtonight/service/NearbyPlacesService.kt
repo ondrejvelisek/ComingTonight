@@ -1,8 +1,7 @@
 package com.muni.comingtonight.service
 
 import android.location.Location
-import com.muni.comingtonight.model.Place
-import com.muni.comingtonight.model.Show
+import com.muni.comingtonight.model.Activity
 
 /**
  * Created by ondrejvelisek on 18.4.18.
@@ -10,6 +9,6 @@ import com.muni.comingtonight.model.Show
 
 interface NearbyPlacesService {
 
-    fun getNearbyPlaces(location: Location) : List<Place>
+    fun getNearbyPlaces(location: Location) : List<Activity>
 
 }

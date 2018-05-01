@@ -1,16 +1,17 @@
 package com.muni.comingtonight.service
 
-import com.muni.comingtonight.model.Show
+import com.muni.comingtonight.model.Activity
+import com.muni.comingtonight.model.Category
 
 class TvProgramServiceStatic : TvProgramService {
 
     private val movies = listOf(
-            Show("Lord of The ring", 8.9),
-            Show("Simpsons XXVII.", 8.0),
-            Show("Game of Thronmes", 7.3)
+            Activity("Lord of The ring", 8.9, Category.HOME),
+            Activity("Simpsons XXVII.", 8.0, Category.HOME),
+            Activity("Game of Thronmes", 7.3, Category.HOME)
     )
 
-    override fun getTodaysMovies(): List<Show> {
+    override fun getTodaysMovies(): List<Activity> {
         return movies
     }
 
