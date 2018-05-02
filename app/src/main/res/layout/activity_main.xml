@@ -31,29 +31,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-
-                <ImageView
-                    android:id="@+id/weatherIcon1"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                <TextView
+                    android:id="@+id/locationNameText"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/default_locationName"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
                     android:layout_margin="8dp"
-                    app:srcCompat="@drawable/ic_cloudy"
-                    />
-
-                <ImageView
-                    android:id="@+id/weatherIcon2"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_margin="8dp"
-                    app:srcCompat="@drawable/ic_cold"
-                    />
-
-                <ImageView
-                    android:id="@+id/weatherIcon3"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_margin="8dp"
-                    app:srcCompat="@drawable/ic_rainy"
                     />
 
             </LinearLayout>
@@ -72,30 +57,33 @@
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:layout_margin="8dp"
-                    app:srcCompat="@drawable/ic_storm" />
+                    />
 
                 <ImageView
-                    android:id="@+id/weatherIcon4"
+                    android:id="@+id/weatherIcon1"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_margin="8dp"
                     app:srcCompat="@drawable/ic_sunny"
+                    android:visibility="gone"
                     />
 
                 <ImageView
-                    android:id="@+id/weatherIcon5"
+                    android:id="@+id/weatherIcon2"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_margin="8dp"
                     app:srcCompat="@drawable/ic_windy"
+                    android:visibility="gone"
                     />
 
                 <ImageView
-                    android:id="@+id/weatherIcon6"
+                    android:id="@+id/weatherIcon3"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_margin="8dp"
                     app:srcCompat="@drawable/ic_storm"
+                    android:visibility="gone"
                     />
 
             </LinearLayout>

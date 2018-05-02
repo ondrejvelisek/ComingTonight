@@ -1,12 +1,11 @@
 package com.muni.comingtonight.model
 
-import android.location.Location
-import java.net.URL
+import java.net.URI
 
 data class Activity(
         val name: String,
         val rating: Double,
-        val category: Category
+        val category: Category,
 //      val location: Location,
-//      val imageUrl: URL
+        val imageUri: URI
 )

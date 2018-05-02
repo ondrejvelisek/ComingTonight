@@ -4,6 +4,6 @@ import com.muni.comingtonight.model.Activity
 
 interface TvProgramService {
 
-    fun getTodaysMovies() : List<Activity>
+    suspend fun getTodaysMovies() : List<Activity>
 
 }

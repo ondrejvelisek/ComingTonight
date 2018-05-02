@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Coming Tonight</string>
     <string name="menu_item_suggestion">Phone me</string>
-    <string name="default_temperature">24°</string>
+    <string name="default_temperature">20°</string>
     <string name="default_movie_title">Watch: Lord of the rings</string>
+    <string name="default_locationName">Elsewhere</string>
 </resources>

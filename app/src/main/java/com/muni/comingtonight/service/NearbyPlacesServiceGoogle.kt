@@ -13,15 +13,15 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 class NearbyPlacesServiceGoogle : NearbyPlacesService {
 
-    override fun getNearbyPlaces(location: Location): List<Activity> {
+    private val googlePlacesApi = Retrofit.Builder()
+            .baseUrl("https://maps.googleapis.com/maps/api/place/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(GooglePlacesApi::class.java)
+
+    override suspend fun getNearbyPlaces(location: Location): List<Activity> {
         TODO("not implemented")
 
-        val retrofit = Retrofit.Builder()
-                .baseUrl("https://maps.googleapis.com/maps/api/place/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
-        val googlePlaces = retrofit.create(GooglePlacesApi::class.java)
     }
 
 }

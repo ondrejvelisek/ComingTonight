@@ -5,8 +5,8 @@ import com.muni.comingtonight.model.Weather
 
 class WeatherServiceStatic : WeatherService {
 
-    override fun getEveningWeather(location: Location): Weather {
-        return Weather(0.0, 18.5, 14.8)
+    override suspend fun getEveningWeather(location: Location): Weather {
+        return Weather("Újezd", 0.0, 18.5, 14.8)
     }
 
 }
