@@ -1,18 +1,13 @@
 package com.muni.comingtonight.activity
 
-import android.location.Location
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import com.muni.comingtonight.R
-import com.muni.comingtonight.model.Show
 import com.muni.comingtonight.service.ShowRatingServiceStatic
 import com.muni.comingtonight.service.TvProgramServiceStatic
 import com.muni.comingtonight.service.WeatherServiceStatic
-import io.nlopez.smartlocation.OnLocationUpdatedListener
 import io.nlopez.smartlocation.SmartLocation
 import kotlinx.android.synthetic.main.activity_shows.*
-import kotlinx.android.synthetic.main.activity_shows.view.*
 
 class ShowsActivity : AppCompatActivity() {
 
@@ -27,7 +22,7 @@ class ShowsActivity : AppCompatActivity() {
         val shows = tvProgramService.getTodaysMovies()
         var bestShow = shows.first()
         shows.forEach { show ->
-            if (showRatingService.getRating(show.title) > showRatingService.getRating(bestShow.title)) {
+            if (showRatingService.getRating(show.name) > showRatingService.getRating(bestShow.name)) {
                 bestShow = show
             }
         }

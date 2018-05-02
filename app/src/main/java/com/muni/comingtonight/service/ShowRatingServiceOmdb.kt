@@ -1,7 +1,5 @@
 package com.muni.comingtonight.service
 
-import com.muni.comingtonight.model.Show
-
 /**
  * Implementation based on Omdb API service http://www.omdbapi.com/
  * We registered following api key
