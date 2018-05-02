@@ -16,5 +16,5 @@ interface GooglePlacesApi {
             @Query("radius") radius: Int,
             @Query("type") type: String,
             @Query("key") apiKey: String
-        ): Call<JsonObject>
+    ): Call<JsonObject>
 }

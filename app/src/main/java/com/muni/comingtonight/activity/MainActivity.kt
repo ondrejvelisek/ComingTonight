@@ -12,6 +12,7 @@ import com.muni.comingtonight.strategy.BestOptionStrategyImpl
 import io.nlopez.smartlocation.SmartLocation
 import kotlinx.android.synthetic.main.activity_main.*
 import android.view.View.VISIBLE
+import com.muni.comingtonight.service.NearbyPlacesServiceGoogle
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.experimental.*
 
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     private val tvProgramService = TvProgramServiceStatic()
     private val weatherService = WeatherServiceApixu()
-    private val nearbyPlacesService = NearbyPlacesServiceStatic()
+    private val nearbyPlacesService = NearbyPlacesServiceGoogle()
     private val bestOptionStrategy = BestOptionStrategyImpl()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity() {
                             weatherIcon1.setImageResource(R.drawable.ic_sunny)
                             weatherIcon1.visibility = VISIBLE
                         }
-                        if (weather.wind > 10) {
+                        if (weather.wind > 30) {
                             weatherIcon2.setImageResource(R.drawable.ic_windy)
                             weatherIcon2.visibility = VISIBLE
                         }
@@ -59,9 +60,11 @@ class MainActivity : AppCompatActivity() {
 
                         activityName.text = activity.name
 
-                        Picasso.with(baseContext)
-                                .load(activity.imageUri.toString())
-                                .into(posterImage)
+                        if (activity.imageUri != null) {
+                            Picasso.with(baseContext)
+                                    .load(activity.imageUri?.toString())
+                                    .into(posterImage)
+                        }
 
                     }
 

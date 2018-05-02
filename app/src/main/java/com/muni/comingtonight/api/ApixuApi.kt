@@ -14,6 +14,6 @@ interface ApixuApi {
     fun todaysForecast(
             @Query("q") location: String,
             @Query("key") apiKey: String
-        ): Call<JsonObject>
+    ): Call<JsonObject>
 
 }

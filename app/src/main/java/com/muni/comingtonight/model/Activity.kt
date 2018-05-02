@@ -7,5 +7,5 @@ data class Activity(
         val rating: Double,
         val category: Category,
 //      val location: Location,
-        val imageUri: URI
+        val imageUri: URI?
 )

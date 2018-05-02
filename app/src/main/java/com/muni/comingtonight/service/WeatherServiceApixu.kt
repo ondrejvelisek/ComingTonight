@@ -27,6 +27,8 @@ class WeatherServiceApixu : WeatherService {
                 "5a09d63a43214eb79e585842181104"
         ).await()
 
+        println(forecast.toString())
+
         val locationName = forecast
                 .getAsJsonObject("location")
                 .getAsJsonPrimitive("name")

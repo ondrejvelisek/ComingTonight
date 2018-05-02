@@ -8,10 +8,12 @@ class BestOptionStrategyImpl : BestOptionStrategy {
 
     override fun chooseBestActivity(weather: Weather, activities: List<Activity>): Activity {
 
+        // TODO extract tresholds as instance field (constructor initialized)
+
         if (
-                weather.precipitation < 0.05
+                weather.precipitation < 0.1
                 && weather.temperature > 5 && weather.temperature < 30
-                && weather.wind < 100
+                && weather.wind < 30
         ) {
             // Perfect weather
 
@@ -20,9 +22,9 @@ class BestOptionStrategyImpl : BestOptionStrategy {
                     .reduce { acc, activity -> if (activity.rating > acc.rating) activity else acc }
 
         } else if (
-                weather.precipitation > 0.5
+                weather.precipitation > 8
                 || weather.temperature < -5 || weather.temperature > 40
-                || weather.wind > 300
+                || weather.wind > 100
         ) {
             // Terrible weather
 
