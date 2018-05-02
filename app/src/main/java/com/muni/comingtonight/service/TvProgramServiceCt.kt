@@ -7,7 +7,7 @@ import com.muni.comingtonight.model.Activity
  */
 class TvProgramServiceCt : TvProgramService {
 
-    override fun getTodaysMovies(): List<Activity> {
+    override suspend fun getTodaysMovies(): List<Activity> {
         TODO("unimplemented yet")
     }
 

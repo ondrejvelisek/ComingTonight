@@ -1,33 +1,27 @@
 package com.muni.comingtonight.activity
 
-import android.annotation.SuppressLint
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.muni.comingtonight.R
-import com.muni.comingtonight.api.GooglePlacesApi
 import com.muni.comingtonight.model.Activity
 import com.muni.comingtonight.service.NearbyPlacesServiceStatic
-import com.muni.comingtonight.service.ShowRatingServiceStatic
 import com.muni.comingtonight.service.TvProgramServiceStatic
-import com.muni.comingtonight.service.WeatherServiceStatic
+import com.muni.comingtonight.service.WeatherServiceApixu
+import kotlinx.coroutines.experimental.android.UI
 import com.muni.comingtonight.strategy.BestOptionStrategyImpl
 import io.nlopez.smartlocation.SmartLocation
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_shows.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import android.view.View.VISIBLE
+import com.squareup.picasso.Picasso
+import kotlinx.coroutines.experimental.*
 
 
 class MainActivity : AppCompatActivity() {
 
-
     private val tvProgramService = TvProgramServiceStatic()
-    private val weatherService = WeatherServiceStatic()
-    private val bestOptionStrategy = BestOptionStrategyImpl()
+    private val weatherService = WeatherServiceApixu()
     private val nearbyPlacesService = NearbyPlacesServiceStatic()
+    private val bestOptionStrategy = BestOptionStrategyImpl()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,18 +30,40 @@ class MainActivity : AppCompatActivity() {
         SmartLocation.with(this).location()
                 .start { location ->
 
-                    val weather = weatherService.getEveningWeather(location)
+                    launch(UI) {
 
-                    temperatureText.text = weather.temperature.toString() + "°"
-                    // TODO show more weather
+                        val weather = withContext(CommonPool) { weatherService.getEveningWeather(location) }
 
-                    val activities = mutableListOf<Activity>()
-                    activities.addAll(tvProgramService.getTodaysMovies())
-                    activities.addAll(nearbyPlacesService.getNearbyPlaces(location))
+                        locationNameText.text = weather.locationName
+                        temperatureText.text = "%.1f°".format(weather.temperature)
+                        if (weather.precipitation > 0.1) {
+                            weatherIcon1.setImageResource(R.drawable.ic_rainy)
+                            weatherIcon1.visibility = VISIBLE
+                        } else {
+                            weatherIcon1.setImageResource(R.drawable.ic_sunny)
+                            weatherIcon1.visibility = VISIBLE
+                        }
+                        if (weather.wind > 10) {
+                            weatherIcon2.setImageResource(R.drawable.ic_windy)
+                            weatherIcon2.visibility = VISIBLE
+                        }
 
-                    val activity = bestOptionStrategy.chooseBestActivity(weather, activities)
+                        val moviesDfr = async(CommonPool) { tvProgramService.getTodaysMovies() }
+                        val placesDfr = async(CommonPool) { nearbyPlacesService.getNearbyPlaces(location) }
 
-                    activityName.text = activity.name
+                        val activities = mutableListOf<Activity>()
+                        activities.addAll(moviesDfr.await())
+                        activities.addAll(placesDfr.await())
+
+                        val activity = bestOptionStrategy.chooseBestActivity(weather, activities)
+
+                        activityName.text = activity.name
+
+                        Picasso.with(baseContext)
+                                .load(activity.imageUri.toString())
+                                .into(posterImage)
+
+                    }
 
                 }
 

@@ -3,16 +3,19 @@ package com.muni.comingtonight.service
 import android.location.Location
 import com.muni.comingtonight.model.Activity
 import com.muni.comingtonight.model.Category
+import java.net.URI
 
 class NearbyPlacesServiceStatic : NearbyPlacesService {
 
+    private val IMAGE_URI = URI("https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg")
+
     private val places = listOf(
-            Activity("Kravi Hora", 3.9, Category.NATURE),
-            Activity("Spilberk", 4.5, Category.CITY),
-            Activity("Lužánky Park", 4.4, Category.NATURE)
+            Activity("Kravi Hora", 3.9, Category.NATURE, IMAGE_URI),
+            Activity("Spilberk", 4.5, Category.CITY, IMAGE_URI),
+            Activity("Lužánky Park", 4.4, Category.NATURE, IMAGE_URI)
     )
 
-    override fun getNearbyPlaces(location: Location): List<Activity> {
+    override suspend fun getNearbyPlaces(location: Location): List<Activity> {
         return places
     }
 

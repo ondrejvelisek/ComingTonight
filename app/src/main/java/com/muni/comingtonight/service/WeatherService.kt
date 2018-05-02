@@ -5,6 +5,6 @@ import com.muni.comingtonight.model.Weather
 
 interface WeatherService {
 
-    fun getEveningWeather(location: Location) : Weather
+    suspend fun getEveningWeather(location: Location) : Weather
 
 }

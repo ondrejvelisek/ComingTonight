@@ -1,5 +1,6 @@
 package com.muni.comingtonight.api
 
+import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -15,5 +16,5 @@ interface GooglePlacesApi {
             @Query("radius") radius: Int,
             @Query("type") type: String,
             @Query("key") apiKey: String
-        ): Call<Map<String, Any>>
+        ): Call<JsonObject>
 }

@@ -9,6 +9,6 @@ import com.muni.comingtonight.model.Activity
 
 interface NearbyPlacesService {
 
-    fun getNearbyPlaces(location: Location) : List<Activity>
+    suspend fun getNearbyPlaces(location: Location) : List<Activity>
 
 }
