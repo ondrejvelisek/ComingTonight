@@ -4,6 +4,7 @@ import com.muni.comingtonight.api.OmdbApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.gildor.coroutines.retrofit.await
+import java.net.URI
 
 /**
  * Implementation based on Omdb API service http://www.omdbapi.com/
@@ -18,25 +19,27 @@ class ShowRatingServiceOmdb : ShowRatingService{
             .build()
             .create(OmdbApi::class.java)
 
-    override suspend fun getRating(title: String): Double
-    {
-        val movieInfo = omdbApi.getMovieInfo(title,"74457713"
+    override suspend fun getRating(title: String): Double {
+        val movieInfo = omdbApi.getMovieInfo(title, "74457713"
         ).await()
 
-        println(movieInfo.toString())
-
-        val  rating = movieInfo
-                .getAsJsonObject("movie")
-                .getAsJsonPrimitive("imdbRating")
-                .asDouble
-        /*
-        val  poster = movieInfo
-                .getAsJsonObject("movie")
-                .getAsJsonPrimitive("imdbRating")
+        val response = movieInfo
+                .getAsJsonPrimitive("Response")
                 .asString
-        */
-        if (rating > 0.0)
+
+        if (response == "True")
         {
+            val  rating = movieInfo
+                    .getAsJsonPrimitive("imdbRating")
+                    .asDouble
+            /*
+            //Poster example: http://ia.media-imdb.com/images/M/MV5BZTUzNGIyM2EtZTY1MC00NzZjLTk0MjgtN2NhYWQ5MzFhZGRkXkEyXkFqcGdeQXVyMjIxMzMyMQ@@._V1_SX300.jpg
+
+            val poster = URI(movieInfo
+                    .getAsJsonPrimitive("Poster")
+                    .asString)
+            */
+
             return rating
             //return Pair(rating, poster)
         }
@@ -45,8 +48,6 @@ class ShowRatingServiceOmdb : ShowRatingService{
             return 0.0
             //return Pair(0.0, poster)
         }
-
     }
-
 }
 
