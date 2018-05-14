@@ -29,11 +29,23 @@ class ShowRatingServiceOmdb : ShowRatingService{
                 .getAsJsonObject("movie")
                 .getAsJsonPrimitive("imdbRating")
                 .asDouble
-
+        /*
+        val  poster = movieInfo
+                .getAsJsonObject("movie")
+                .getAsJsonPrimitive("imdbRating")
+                .asString
+        */
         if (rating > 0.0)
+        {
             return rating
+            //return Pair(rating, poster)
+        }
         else
+        {
             return 0.0
+            //return Pair(0.0, poster)
+        }
+
     }
 
 }
