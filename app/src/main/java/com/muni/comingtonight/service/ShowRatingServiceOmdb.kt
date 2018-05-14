@@ -46,7 +46,7 @@ class ShowRatingServiceOmdb : ShowRatingService{
         else
         {
             return 0.0
-            //return Pair(0.0, poster)
+            //return Pair(0.0, "")
         }
     }
 }
