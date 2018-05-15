@@ -19,9 +19,10 @@ class ShowRatingServiceOmdb : ShowRatingService{
             .build()
             .create(OmdbApi::class.java)
 
-    override suspend fun getRating(title: String): Double {
-        val movieInfo = omdbApi.getMovieInfo(title, "74457713"
-        ).await()
+    override suspend fun getRating(title: String): Pair<Double, URI> {
+
+        val urlTitle = title.replace(" ".toRegex(), "+")
+        val movieInfo = omdbApi.getMovieInfo(urlTitle, "74457713").await()
 
         val response = movieInfo
                 .getAsJsonPrimitive("Response")
@@ -32,22 +33,22 @@ class ShowRatingServiceOmdb : ShowRatingService{
             val  rating = movieInfo
                     .getAsJsonPrimitive("imdbRating")
                     .asDouble
-            /*
-            //Poster example: http://ia.media-imdb.com/images/M/MV5BZTUzNGIyM2EtZTY1MC00NzZjLTk0MjgtN2NhYWQ5MzFhZGRkXkEyXkFqcGdeQXVyMjIxMzMyMQ@@._V1_SX300.jpg
 
             val poster = URI(movieInfo
                     .getAsJsonPrimitive("Poster")
                     .asString)
-            */
 
-            return rating
-            //return Pair(rating, poster)
+            //return rating
+            return Pair(rating, poster)
         }
         else
         {
-            return 0.0
-            //return Pair(0.0, "")
+            //Movie not found!
+
+            //return 0.0
+            return Pair(0.0, URI(""))
         }
     }
+
 }
 
