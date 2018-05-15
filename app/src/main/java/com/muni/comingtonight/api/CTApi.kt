@@ -10,7 +10,7 @@ import retrofit2.http.Query
  */
 interface CTApi {
 
-    @GET("forecast.json")
+    @GET("schedule.php?user=test")
     fun todaysProgram(
             @Query("date") date: String,
             @Query("channel") channel: String

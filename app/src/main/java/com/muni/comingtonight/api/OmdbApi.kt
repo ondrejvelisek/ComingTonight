@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface OmdbApi
 {
-    @GET("info.json")
+    //@GET("info.json")
     fun getMovieInfo(
             @Query("t") title: String,
             @Query("key") apiKey: String
