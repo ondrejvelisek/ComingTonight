@@ -4,21 +4,19 @@ import com.muni.comingtonight.model.Activity
 import com.muni.comingtonight.model.Category
 import com.muni.comingtonight.model.Weather
 
-class BestOptionStrategyImpl : BestOptionStrategy {
+class TresholdChooseActivityStrategy : ChooseActivityStrategy {
 
     override fun chooseBestActivity(weather: Weather, activities: List<Activity>): Activity {
 
-        // TODO extract tresholds as instance field (constructor initialized)
-
         if (
-                weather.precipitation < 0.1
+                weather.precipitation < 0.3
                 && weather.temperature > 5 && weather.temperature < 30
                 && weather.wind < 30
         ) {
             // Perfect weather
 
             return activities
-                    .filter { activity -> activity.category == Category.NATURE }
+                    .filter { activity -> activity.category == Category.OUTDOOR }
                     .reduce { acc, activity -> if (activity.rating > acc.rating) activity else acc }
 
         } else if (
@@ -36,7 +34,7 @@ class BestOptionStrategyImpl : BestOptionStrategy {
             // Moderate weather
 
             return activities
-                    .filter { activity -> activity.category == Category.CITY }
+                    .filter { activity -> activity.category == Category.INDOOR }
                     .reduce { acc, activity -> if (activity.rating > acc.rating) activity else acc }
 
         }

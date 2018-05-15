@@ -57,16 +57,16 @@ class NearbyPlacesServiceGoogle : NearbyPlacesService {
         val places = mutableListOf<Activity>()
 
         places.addAll(naturalFeaturesCall.await().getAsJsonArray("results")
-                .map { place -> extractActivity(place.asJsonObject, Category.NATURE) }
+                .map { place -> extractActivity(place.asJsonObject, Category.OUTDOOR) }
         )
         places.addAll(parksCall.await().getAsJsonArray("results")
-                .map { place -> extractActivity(place.asJsonObject, Category.NATURE) }
+                .map { place -> extractActivity(place.asJsonObject, Category.OUTDOOR) }
         )
         places.addAll(museumsCall.await().getAsJsonArray("results")
-                .map { place -> extractActivity(place.asJsonObject, Category.CITY) }
+                .map { place -> extractActivity(place.asJsonObject, Category.INDOOR) }
         )
         places.addAll(artGalleriesCall.await().getAsJsonArray("results")
-                .map { place -> extractActivity(place.asJsonObject, Category.CITY) }
+                .map { place -> extractActivity(place.asJsonObject, Category.INDOOR) }
         )
 
         return places
@@ -92,9 +92,9 @@ class NearbyPlacesServiceGoogle : NearbyPlacesService {
         if (containsType(place, "natural_feature")
                 || containsType(place.asJsonObject, "zoo")
                 || containsType(place.asJsonObject, "park")) {
-            return Category.NATURE
+            return Category.OUTDOOR
         } else {
-            return Category.CITY
+            return Category.INDOOR
         }
     }
 
