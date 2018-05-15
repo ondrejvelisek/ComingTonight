@@ -4,4 +4,9 @@
     <string name="default_temperature">20°</string>
     <string name="default_movie_title">Watch: Lord of the rings</string>
     <string name="default_locationName">Elsewhere</string>
+
+    <string name="location_loading">Locating current position</string>
+    <string name="forecast_loading">Predicting weather</string>
+    <string name="activities_loading">Searching nearby activities</string>
+    <string name="choosing_best_loading">Choosing best option</string>
 </resources>
