@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">Coming Tonight</string>
-    <string name="menu_item_suggestion">Phone me</string>
+    <string name="menu_item_indoor">Indoor</string>
+    <string name="menu_item_home">Home</string>
+    <string name="menu_item_outdoor">Outdoor</string>
     <string name="default_temperature">20°</string>
     <string name="default_movie_title">Watch: Lord of the rings</string>
     <string name="default_locationName">Elsewhere</string>
+    <string name="default_rating">5.1/10</string>
 
     <string name="location_loading">Locating current position</string>
     <string name="forecast_loading">Predicting weather</string>
