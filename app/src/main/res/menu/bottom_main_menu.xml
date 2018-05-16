@@ -4,14 +4,14 @@
     <item
         android:id="@+id/action_favorites"
         android:enabled="true"
-        android:icon="@drawable/ic_indoor"
-        android:title="@string/menu_item_indoor"
+        android:icon="@drawable/ic_home"
+        android:title="@string/menu_item_home"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_favorites1"
         android:enabled="true"
-        android:icon="@drawable/ic_home"
-        android:title="@string/menu_item_home"
+        android:icon="@drawable/ic_indoor"
+        android:title="@string/menu_item_indoor"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_favorites2"
