@@ -84,6 +84,7 @@ class NearbyPlacesServiceGoogle : NearbyPlacesService {
                 extractName(place.asJsonObject),
                 extractRating(place.asJsonObject),
                 category,
+                extractLocation(place.asJsonObject),
                 extractImageUri(place.asJsonObject)
         )
     }
@@ -100,6 +101,14 @@ class NearbyPlacesServiceGoogle : NearbyPlacesService {
 
     private fun extractName(place: JsonObject) : String {
         return place.getAsJsonPrimitive("name").asString
+    }
+
+    private fun extractLocation(place: JsonObject) : Location {
+        val locJson = place.getAsJsonObject("geometry").getAsJsonObject("location")
+        val location = Location("INTERNAL")
+        location.latitude = locJson.getAsJsonPrimitive("lat").asDouble
+        location.longitude = locJson.getAsJsonPrimitive("lng").asDouble
+        return location
     }
 
     private fun extractRating(place: JsonObject) : Double {
