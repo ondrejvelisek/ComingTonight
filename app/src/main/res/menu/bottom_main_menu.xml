@@ -4,19 +4,19 @@
     <item
         android:id="@+id/action_favorites"
         android:enabled="true"
-        android:icon="@drawable/common_full_open_on_phone"
-        android:title="@string/menu_item_suggestion"
+        android:icon="@drawable/ic_indoor"
+        android:title="@string/menu_item_indoor"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_favorites1"
         android:enabled="true"
-        android:icon="@drawable/common_full_open_on_phone"
-        android:title="@string/menu_item_suggestion"
+        android:icon="@drawable/ic_home"
+        android:title="@string/menu_item_home"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_favorites2"
         android:enabled="true"
-        android:icon="@drawable/common_full_open_on_phone"
-        android:title="@string/menu_item_suggestion"
+        android:icon="@drawable/ic_outdoor"
+        android:title="@string/menu_item_outdoor"
         app:showAsAction="ifRoom" />
 </menu>
