@@ -35,6 +35,17 @@
                 android:text="@string/default_movie_title"
                 />
 
+            <TextView
+                android:id="@+id/activityRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activityName"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:layout_margin="8dp"
+                android:text="@string/default_rating"
+                />
+
         </RelativeLayout>
 
         <LinearLayout
@@ -67,7 +78,8 @@
                 android:text="@string/navigate"
                 android:layout_alignParentEnd="true"/>
 
-        </RelativeLayout>
+
+            </RelativeLayout>
 
             <android.support.design.widget.BottomNavigationView
                 android:id="@+id/bottom_navigation"
