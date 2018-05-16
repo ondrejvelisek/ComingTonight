@@ -9,7 +9,10 @@ import com.squareup.picasso.Picasso
 import android.content.Intent
 import android.net.Uri
 import android.view.View.INVISIBLE
+import com.muni.comingtonight.service.HawkAttendanceService
 
+const val EXTRA_BEST_ACTIVITY = "EXTRA_BEST_ACTIVITY"
+const val EXTRA_ACTIVITIES = "EXTRA_ACTIVITIES"
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,7 +28,6 @@ class MainActivity : AppCompatActivity() {
             Picasso.with(baseContext)
                     .load(activity.imageUri?.toString())
                     .into(posterImage)
-
         }
 
         if (activity.location == null) {
@@ -40,5 +42,20 @@ class MainActivity : AppCompatActivity() {
                 startActivity(mapIntent)
             }
         }
+
+        val attendanceService = HawkAttendanceService(this)
+
+        println(attendanceService.attended(activity))
+
+        attendedCheckbox.isChecked = attendanceService.attended(activity)
+
+        attendedCheckbox.setOnCheckedChangeListener { _, attended ->
+            if (attended) {
+                attendanceService.attend(activity)
+            } else {
+                attendanceService.unattend(activity)
+            }
+        }
     }
+
 }

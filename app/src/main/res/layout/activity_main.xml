@@ -50,10 +50,10 @@
             android:layout_alignParentBottom="true">
 
             <CheckBox
-                android:layout_margin="10dp"
                 android:id="@+id/attendedCheckbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:buttonTint="@color/white"
                 android:textColor="@color/white"
                 android:text="@string/attended"
@@ -68,7 +68,6 @@
                 android:layout_alignParentEnd="true"/>
 
         </RelativeLayout>
-
 
             <android.support.design.widget.BottomNavigationView
                 android:id="@+id/bottom_navigation"

@@ -16,9 +16,6 @@ import kotlinx.android.synthetic.main.activity_loading.*
 import kotlinx.coroutines.experimental.*
 import kotlin.coroutines.experimental.suspendCoroutine
 
-const val EXTRA_BEST_ACTIVITY = "EXTRA_BEST_ACTIVITY"
-const val EXTRA_ACTIVITIES = "EXTRA_ACTIVITIES"
-
 class LoadingActivity : AppCompatActivity() {
 
     private val tvProgramService = TvProgramServiceStatic()
