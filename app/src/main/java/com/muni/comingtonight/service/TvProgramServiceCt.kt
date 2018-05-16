@@ -74,7 +74,7 @@ class TvProgramServiceCt : TvProgramService
                     if ((time >= "19:00") && (time < "23:59"))
                     {
                         val movieInfo = showRatingService.getRating(name)
-                        val tmp = Activity(name, movieInfo.first, Category.HOME, movieInfo.second)
+                        val tmp = Activity(name, movieInfo.first, Category.HOME, null, movieInfo.second)
                         movieArray.add(tmp)
                     }
                 }

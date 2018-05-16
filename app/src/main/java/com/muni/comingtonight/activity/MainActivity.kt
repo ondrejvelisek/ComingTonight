@@ -6,6 +6,10 @@ import com.muni.comingtonight.R
 import com.muni.comingtonight.model.Activity
 import kotlinx.android.synthetic.main.activity_main.*
 import com.squareup.picasso.Picasso
+import android.content.Intent
+import android.net.Uri
+import android.view.View.INVISIBLE
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +26,19 @@ class MainActivity : AppCompatActivity() {
                     .load(activity.imageUri?.toString())
                     .into(posterImage)
 
+        }
+
+        if (activity.location == null) {
+            navigateButton.visibility = INVISIBLE
+        } else {
+            navigateButton.setOnClickListener {
+                val mapIntentUri = Uri.parse("google.navigation:q=%f,%f".format(
+                        activity.location?.latitude,
+                        activity.location?.longitude
+                ))
+                val mapIntent = Intent(Intent.ACTION_VIEW, mapIntentUri)
+                startActivity(mapIntent)
+            }
         }
     }
 }

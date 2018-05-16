@@ -9,4 +9,6 @@
     <string name="forecast_loading">Predicting weather</string>
     <string name="activities_loading">Searching nearby activities</string>
     <string name="choosing_best_loading">Choosing best option</string>
+    <string name="navigate">Navigate to</string>
+    <string name="attended">Attended</string>
 </resources>
