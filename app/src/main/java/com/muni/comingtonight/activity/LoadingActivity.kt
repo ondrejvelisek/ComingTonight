@@ -16,6 +16,9 @@ import kotlinx.android.synthetic.main.activity_loading.*
 import kotlinx.coroutines.experimental.*
 import kotlin.coroutines.experimental.suspendCoroutine
 
+const val EXTRA_BEST_ACTIVITY = "EXTRA_BEST_ACTIVITY"
+const val EXTRA_ACTIVITIES = "EXTRA_ACTIVITIES"
+
 class LoadingActivity : AppCompatActivity() {
 
     private val tvProgramService = TvProgramServiceStatic()
@@ -57,10 +60,10 @@ class LoadingActivity : AppCompatActivity() {
             choosingBestLoading.visibility = VISIBLE
             choosingBestText.visibility = VISIBLE
 
-            val activity = bestOptionStrategy.chooseBestActivity(weather, activities)
+            val best_activities = bestOptionStrategy.chooseBestActivity(weather, activities)
 
             delay(200)
-            start(activity, activities)
+            start(best_activities, activities)
         }
     }
 
@@ -82,9 +85,9 @@ class LoadingActivity : AppCompatActivity() {
         return activities
     }
 
-    private fun start(activity : Activity, activities : List<Activity>) {
+    private fun start(best_activities : Triple<Activity, Activity, Activity>, activities : List<Activity>) {
         val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra(EXTRA_BEST_ACTIVITY, activity)
+        intent.putExtra(EXTRA_ACTIVITIES, best_activities)
         // TODO intent.putExtra(EXTRA_ACTIVITIES, activities)
         startActivity(intent)
     }

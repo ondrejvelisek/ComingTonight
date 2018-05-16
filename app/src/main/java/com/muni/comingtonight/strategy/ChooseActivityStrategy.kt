@@ -5,6 +5,6 @@ import com.muni.comingtonight.model.Weather
 
 interface ChooseActivityStrategy {
 
-    fun chooseBestActivity(weather: Weather, activities: List<Activity>) : Activity
+    fun chooseBestActivity(weather: Weather, activities: List<Activity>) : Triple<Activity, Activity, Activity>
 
 }

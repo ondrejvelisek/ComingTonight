@@ -6,6 +6,7 @@ import com.muni.comingtonight.model.Weather
 
 class TresholdChooseActivityStrategy : ChooseActivityStrategy {
 
+    /*
     override fun chooseBestActivity(weather: Weather, activities: List<Activity>): Activity {
 
         if (
@@ -39,6 +40,25 @@ class TresholdChooseActivityStrategy : ChooseActivityStrategy {
 
         }
 
+    }
+    */
+    override fun chooseBestActivity(weather: Weather, activities: List<Activity>): Triple<Activity, Activity, Activity> {
+
+        val activity1 = activities
+                .filter { activity -> activity.category == Category.HOME }
+                .reduce { acc, activity -> if (activity.rating > acc.rating) activity else acc }
+
+        val activity2 = activities
+                .filter { activity -> activity.category == Category.INDOOR }
+                .reduce { acc, activity -> if (activity.rating > acc.rating) activity else acc }
+
+        val activity3 = activities
+                .filter { activity -> activity.category == Category.OUTDOOR }
+                .reduce { acc, activity -> if (activity.rating > acc.rating) activity else acc }
+
+
+
+        return Triple(activity1, activity2, activity3)
     }
 
 }
