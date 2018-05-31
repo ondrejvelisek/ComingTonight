@@ -8,93 +8,20 @@
     android:orientation="vertical"
     >
 
-
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="30dp"
         android:layout_weight="1">
 
         <ProgressBar
-            android:id="@+id/locationLoading"
+            android:id="@+id/loading"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerInParent="true"/>
 
         <TextView
-            android:id="@+id/locationText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/location_loading"
-            android:layout_centerInParent="true"
-            android:textColor="@color/white"
-            android:background="@color/black"/>
-
-    </RelativeLayout>
-
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
-
-        <ProgressBar
-            android:id="@+id/forecastLoading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"/>
-
-        <TextView
-            android:id="@+id/forecastText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/forecast_loading"
-            android:layout_centerInParent="true"
-            android:textColor="@color/white"
-            android:background="@color/black"/>
-
-    </RelativeLayout>
-
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
-
-        <ProgressBar
-            android:id="@+id/activitiesLoading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"/>
-
-        <TextView
-            android:id="@+id/activitiesText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/activities_loading"
-            android:layout_centerInParent="true"
-            android:textColor="@color/white"
-            android:background="@color/black"/>
-
-    </RelativeLayout>
-
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
-
-        <ProgressBar
-            android:id="@+id/choosingBestLoading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"/>
-
-        <TextView
-            android:id="@+id/choosingBestText"
+            android:id="@+id/loadingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/choosing_best_loading"

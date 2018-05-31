@@ -28,7 +28,7 @@ class TvProgramServiceCt : TvProgramService
 
     val ctApi = Retrofit.Builder()
             .baseUrl("http://www.ceskatelevize.cz/services/programme/xml/")
-            .addConverterFactory(GsonConverterFactory.create())
+//            .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(com.muni.comingtonight.api.CTApi::class.java)
 
