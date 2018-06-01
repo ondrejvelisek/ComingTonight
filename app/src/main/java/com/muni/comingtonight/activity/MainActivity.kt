@@ -11,8 +11,7 @@ import android.content.Intent
 import android.net.Uri
 import android.support.design.internal.BottomNavigationItemView
 import android.view.View
-import android.view.View.GONE
-import android.view.View.INVISIBLE
+import android.view.View.*
 import com.muni.comingtonight.service.HawkAttendanceService
 
 
@@ -68,7 +67,7 @@ class MainActivity : AppCompatActivity() {
                             activity = best_activities.first
                             activityName.text = activity.name
                             activityRating.text = activity.rating.toString()
-
+                            program.visibility = VISIBLE
                             if (activity.imageUri != null) {
                                 Picasso.with(baseContext)
                                         .load(activity.imageUri?.toString())
@@ -93,7 +92,7 @@ class MainActivity : AppCompatActivity() {
                             activity = best_activities.second
                             activityName.text = activity.name
                             activityRating.text = activity.rating.toString()
-
+                            program.visibility = INVISIBLE
                             if (activity.imageUri != null) {
                                 Picasso.with(baseContext)
                                         .load(activity.imageUri?.toString())
@@ -119,7 +118,7 @@ class MainActivity : AppCompatActivity() {
                             activity = best_activities.third
                             activityName.text = activity.name
                             activityRating.text = activity.rating.toString()
-
+                            program.visibility = INVISIBLE
                             if (activity.imageUri != null) {
                                 Picasso.with(baseContext)
                                         .load(activity.imageUri?.toString())
