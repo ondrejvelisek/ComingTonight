@@ -31,8 +31,12 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="24sp"
-                android:layout_margin="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
                 android:text="@string/default_movie_title"
+                android:padding="8dp"
+                android:background="@color/blackTransparent"
                 />
 
             <TextView
@@ -42,8 +46,14 @@
                 android:layout_below="@+id/activityName"
                 android:textColor="@color/white"
                 android:textSize="24sp"
-                android:layout_margin="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
                 android:text="@string/default_rating"
+                android:paddingBottom="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:background="@color/blackTransparent"
                 />
 
         </RelativeLayout>
@@ -58,16 +68,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_alignParentBottom="true">
+            android:layout_alignParentBottom="true"
+            android:background="@color/blackTransparent">
 
             <CheckBox
                 android:id="@+id/attendedCheckbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:buttonTint="@color/white"
                 android:textColor="@color/white"
                 android:text="@string/attended"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
                 />
 
             <Button

@@ -4,13 +4,11 @@ import android.content.Intent
 import android.location.Location
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View.INVISIBLE
 import com.muni.comingtonight.R.*
 import com.muni.comingtonight.model.Activity
 import kotlinx.coroutines.experimental.android.UI
 import com.muni.comingtonight.strategy.TresholdChooseActivityStrategy
 import io.nlopez.smartlocation.SmartLocation
-import android.view.View.VISIBLE
 import com.muni.comingtonight.service.*
 import kotlinx.android.synthetic.main.activity_loading.*
 import kotlinx.coroutines.experimental.*
@@ -32,33 +30,22 @@ class LoadingActivity : AppCompatActivity() {
 
         launch(UI) {
 
-            forecastLoading.visibility = INVISIBLE
-            forecastText.visibility = INVISIBLE
-            activitiesLoading.visibility = INVISIBLE
-            activitiesText.visibility = INVISIBLE
-            choosingBestLoading.visibility = INVISIBLE
-            choosingBestText.visibility = INVISIBLE
+            loadingText.text = getString(string.location_loading)
 
             val location = getLocation()
 
             delay(200)
-            locationLoading.visibility = INVISIBLE
-            forecastLoading.visibility = VISIBLE
-            forecastText.visibility = VISIBLE
+            loadingText.text = getString(string.forecast_loading)
 
             val weather = withContext(CommonPool) { weatherService.getEveningWeather(location) }
 
             delay(800)
-            forecastLoading.visibility = INVISIBLE
-            activitiesLoading.visibility = VISIBLE
-            activitiesText.visibility = VISIBLE
+            loadingText.text = getString(string.activities_loading)
 
             val activities = getActivities(location)
 
             delay(400)
-            activitiesLoading.visibility = INVISIBLE
-            choosingBestLoading.visibility = VISIBLE
-            choosingBestText.visibility = VISIBLE
+            loadingText.text = getString(string.choosing_best_loading)
 
             val best_activities = bestOptionStrategy.chooseBestActivity(weather, activities)
 
